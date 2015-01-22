@@ -4,6 +4,7 @@ import java.util.Stack;
 
 
 public class RPN {
+	
 	Stack<Integer> stack = new Stack<Integer>();
 	
 	Stack<Integer> evaluate(String expression) {
@@ -11,15 +12,46 @@ public class RPN {
 		Scanner scanner = new Scanner(sr);
 		while (scanner.hasNext()) {
 			String token = scanner.next();
+			
 			// Check for +, -, /, *
 			if (token.equals("+")) {
-				// do the appropriate thing
-				// pop 2 items off stack, and place result
-				// onto stack
+				int a = stack.peek();
+				stack.pop();
+				int b = stack.peek();
+				stack.pop();
+				
+				stack.push(a+b);
+			}
+			else if(token.equals("-")){
+				int a = stack.peek();
+				stack.pop();
+				int b = stack.peek();
+				stack.pop();
+				
+				stack.push(a-b);
+			}
+			else if(token.equals("*")){
+				int a = stack.peek();
+				stack.pop();
+				int b = stack.peek();
+				stack.pop();
+				
+				stack.push(a*b);
+			}
+			else if(token.equals("/")){
+				int a = stack.peek();
+				stack.pop();
+				int b = stack.peek();
+				stack.pop();
+				
+				stack.push(a/b);
+			}
+			else{
+				stack.push(Integer.parseInt(token));
 			}
 			// catch all case
 			// put the integer on the stack
-			Integer.parseInt(token);
+
 		}
 		
 		return stack;
