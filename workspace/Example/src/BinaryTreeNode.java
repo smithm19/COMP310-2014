@@ -31,10 +31,39 @@ public class BinaryTreeNode
 	}
 	// Can you write this function?
 	// Hint: try doing what you do in the add function
-	boolean contains (DataType moreData) {
-		return false;
-	}
+	boolean contains (DataType Data) {
+		int result = this.data.compareTo(data);
+			if (result < 0 ) 
+			{
+				if (right == null)
+				{
+					return false;
+				}
+				else
+				{
+					return right.contains(data);
+			    }
+			}
+				else if (result == 0)
+				{
+					return true;
+				}
+				else
+				{
+					if(left==null)
+					{
+						return false;
+					}
+					else
+					{
+						return left.contains(data);
+					}
+				}
+					
+			}
 	public static void main(String[] args) {
 		System.out.println("Hello".compareTo("World"));
 	}
+	
+	
 }
